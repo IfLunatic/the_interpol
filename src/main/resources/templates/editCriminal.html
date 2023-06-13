@@ -5,7 +5,8 @@
     <title>Edit criminal</title>
 </head>
 <body>
-<form th:method="PATCH" th:action="@{/{id}(id=${criminal.getId()})}" th:object="${criminal}">
+<form method="POST" th:action="@{/{id}(id=${criminal.getId()})}" th:object="${criminal}">
+    <input type="hidden" name="_method" value="PATCH"/>
     <label for="surname">Surname:</label>
     <input type="text" th:field="*{surname}" id="surname"/>
     <div style="color:red" th:errors="*{surname}">Surname Error</div>

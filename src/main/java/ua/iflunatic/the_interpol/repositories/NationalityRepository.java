@@ -1,4 +1,7 @@
 package ua.iflunatic.the_interpol.repositories;
 
-public interface NationalityRepository extends org.springframework.data.jpa.repository.JpaRepository<ua.iflunatic.the_interpol.entities.Nationality, java.lang.Integer> {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ua.iflunatic.the_interpol.entities.Nationality;
+
+public interface NationalityRepository extends JpaRepository<Nationality, Integer> {
 }

@@ -5,13 +5,28 @@
     <title>Selected Criminal</title>
 </head>
 <body>
-<p th:text="${criminal.name}">VALUE</p>
-<p th:text="${criminal.id}">VALUE</p>
-
+<p th:text="'Name: ' + ${criminal.name}">VALUE</p>
+<p th:text="'Id: ' + ${criminal.id}">VALUE</p>
+<p th:text="'Surname: ' + ${criminal.surname}">VALUE</p>
+<p th:text="'Nickname: ' + ${criminal.nickname}">VALUE</p>
+<p th:text="'Height: ' + ${criminal.height}">VALUE</p>
+<p th:text="'Hair colour: ' + ${criminal.hairColour}">VALUE</p>
+<p th:text="'Eye colour: ' + ${criminal.eyeColour}">VALUE</p>
+<p th:text="'Special features: ' + ${criminal.specialFeatures}">VALUE</p>
+<p th:text="'Nationality: ' + ${criminal.nationality}">VALUE</p>
+<p th:text="'Place of origin: ' + ${criminal.placeOfOrigin}">VALUE</p>
+<p th:text="'Date of birth: ' + ${criminal.dateOfBirth}">VALUE</p>
+<p th:text="'Place of residence: ' + ${criminal.lastPlaceOfResidence}">VALUE</p>
+<p th:text="'Last case: ' + ${criminal.lastCase}">VALUE</p>
+<p th:text="'Band(group): ' + ${criminal.group}">VALUE</p>
+<p th:text="'Profession: ' + ${criminal.profession}">VALUE</p>
+<p th:text="'Language: ' + ${criminal.language}">VALUE</p>
+<button>
 <a th:href="@{/{id}/editCriminal(id=${criminal.id})}">Edit</a>
-
-<form th:method="DELETE" th:action="@{/{id}(id=${criminal.id})}">
+</button>
+<form th:method="DELETE" th:action="@{/{id}(id=${criminal.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
+<a href="/">Menu</a>
 </body>
 </html>

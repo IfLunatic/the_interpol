@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="c : ${criminalsProfession}">
+    <a th:href="@{/{id}(id=${c.getId()})}" th:text="${c.getId() + ' ' +  c.getName()}">Criminal Profession</a>
+</div>
+<a href="/criminalProfession/new">Create new profession</a><br>
+<a href="/">Menu</a>
+</body>
+</html>
