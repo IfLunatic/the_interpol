@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Criminal</title>
+</head>
+<body>
+<h2>Create Criminal</h2>
+<form method="post" th:action="@{/criminals}" th:object="${criminal}">
+    <label for="surname">Surname:</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <div style="color:red" th:errors="*{surname}">Surname Error</div>
+    <br/>
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:errors="*{name}">Name Error</div>
+    <br/>
+    <label for="nickname">Nickname:</label>
+    <input type="text" th:field="*{nickname}" id="nickname"/>
+    <div style="color:red" th:errors="*{nickname}">Nickname Error</div>
+    <br/>
+    <label for="height">Height:</label>
+    <input type="number" th:field="*{height}" id="height"/>
+    <div style="color:red" th:errors="*{height}">Height Error</div>
+    <br/>
+    <label for="hairColour">Hair Colour:</label>
+    <input type="text" th:field="*{hairColour}" id="hairColour"/>
+    <div style="color:red" th:errors="*{hairColour}">Hair Colour Error</div>
+    <br/>
+    <label for="eyeColour">Eye Colour:</label>
+    <input type="text" th:field="*{eyeColour}" id="eyeColour"/>
+    <div style="color:red" th:errors="*{eyeColour}">Eye Colour Error</div>
+    <br/>
+    <label for="specialFeatures">Special Features:</label>
+    <textarea th:field="*{specialFeatures}" id="specialFeatures"></textarea>
+    <br/>
+    <label for="nationality">Nationality:</label>
+    <select th:field="*{nationality}" id="nationality">
+        <option value="">Select Nationality</option>
+        <option th:each="nationality : ${nationalities}" th:value="${nationality.id}" th:text="${nationality.name}">Nationality Name</option>
+    </select>
+    <div style="color:red" th:errors="*{nationality}">Nationality Error</div>
+    <br/>
+    <label for="placeOfOrigin">Place of Origin:</label>
+    <input type="text" th:field="*{placeOfOrigin}" id="placeOfOrigin"/>
+    <div style="color:red" th:errors="*{placeOfOrigin}">Place of Origin Error</div>
+    <br/>
+    <label for="dateOfBirth">Date of Birth (yyyy-MM-dd):</label>
+    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth"/>
+    <div style="color:red" th:errors="*{dateOfBirth}">Date of Birth Error</div>
+    <br/>
+    <label for="lastPlaceOfResidence">Last Place of Residence:</label>
+    <input type="text" th:field="*{lastPlaceOfResidence}" id="lastPlaceOfResidence"/>
+    <div style="color:red" th:errors="*{lastPlaceOfResidence}">Last Place of Residence Error</div>
+    <br/>
+    <label for="lastCase">Last Case:</label>
+    <input type="text" th:field="*{lastCase}" id="lastCase"/>
+    <div style="color:red" th:errors="*{lastCase}">Last Case Error</div>
+    <br/>
+    <label for="group">Group:</label>
+    <select th:field="*{group}" id="group">
+        <option value="">Select Group</option>
+        <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.groupName}">Group Name</option>
+    </select>
+    <div style="color:red" th:errors="*{group}">Group Error</div>
+    <br/>
+    <label for="profession">Profession:</label>
+    <select th:field="*{profession}" id="profession">
+        <option value="">Select Profession</option>
+        <option th:each="profession : ${professions}" th:value="${profession.getId()}" th:text="${profession.getName()}">Profession Name</option>
+    </select>
+    <div style="color:red" th:errors="*{profession}">Profession Error</div>
+    <br/>
+    <label for="language">Language:</label>
+    <select th:field="*{language}" id="language">
+        <option value="">Select Language</option>
+        <option th:each="language : ${languages}" th:value="${language.id}" th:text="${language.name}">Language Name</option>
+    </select>
+    <div style="color:red" th:errors="*{language}">Language Error</div>
+    <br/>
+
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>

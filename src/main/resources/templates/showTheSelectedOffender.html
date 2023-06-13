@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Selected Criminal</title>
+</head>
+<body>
+<p th:text="${criminal.name}">VALUE</p>
+<p th:text="${criminal.id}">VALUE</p>
+
+<a th:href="@{/{id}/editCriminal(id=${criminal.id})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/{id}(id=${criminal.id})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
