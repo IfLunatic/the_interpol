@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Details</title>
+</head>
+<body>
+<h1>Language: <span th:text="${language.name}"></span></h1>
+<ul>
+    <li th:each="criminal : ${language.criminals}">
+        <a th:href="@{'/criminals/' + ${criminal.id}}" th:text="${criminal.name}"></a>
+    </li>
+</ul>
+<a href="/language/new">Create new language</a><br>
+<a href="/">Menu</a>
+</body>
+</html>

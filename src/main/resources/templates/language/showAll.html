@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Languages</title>
+</head>
+<body>
+<div th:each="language : ${languages}">
+    <p>
+        <a th:href="@{'/language/' + ${language.id}}" th:text="${language.id + ' ' + language.name}">Language</a>
+        <a th:href="@{'/language/' + ${language.id} + '/edit'}">Edit</a>
+    </p>
+</div>
+<a href="/language/new">Create new language</a><br>
+<a href="/">Menu</a>
+</body>
+</html>

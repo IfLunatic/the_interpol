@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Language</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/language/new}" th:object="${language}">
+    <label for="languageName">Language Name:</label>
+    <input type="text" th:field="${language.name}" id="languageName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <input type="submit" value="Create Language"/>
+</form>
+</body>
+</html>

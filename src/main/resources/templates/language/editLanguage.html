@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Language</title>
+</head>
+<body>
+<h1>Edit Language</h1>
+<form th:action="@{/language/{languageId}(languageId=${language.id})}" method="post">
+    <input type="hidden" name="_method" value="PATCH" />
+    <label for="name">Language Name:</label>
+    <input type="text" id="name" name="name" th:value="${language.name}" />
+    <button type="submit">Update Language</button>
+</form>
+</body>
+</html>
