@@ -22,14 +22,15 @@ public class Group {
     @OneToMany(mappedBy = "group")
     private List<Criminal> criminals;
 
+    public List<Criminal> getCriminals() {
+        return criminals;
+    }
+
     @NotEmpty
     private String groupName;
 
     public String getGroupName() {
         return groupName;
-    }
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
     }
 
     @Override

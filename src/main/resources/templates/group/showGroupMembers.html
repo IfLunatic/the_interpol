@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Group Members</title>
+</head>
+<body>
+<h1>Group: <span th:text="${group.groupName}"></span></h1>
+<ul>
+  <li th:each="member : ${members}">
+    <a th:href="@{'/criminals/' + ${member.id}}" th:text="${member.name}"></a>
+  </li>
+</ul>
+<a href="/group/new">Create new group</a><br>
+<a href="/">Menu</a>
+</body>
+</html>

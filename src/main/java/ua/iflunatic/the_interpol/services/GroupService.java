@@ -23,4 +23,8 @@ public class GroupService {
     public void save(Group group) {
         groupRepository.save(group);
     }
+
+    public Group getGroupById(Integer groupId) {
+        return groupRepository.findById(groupId).orElse(null);
+    }
 }
