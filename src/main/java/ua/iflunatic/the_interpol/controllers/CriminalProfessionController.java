@@ -49,4 +49,23 @@ public class CriminalProfessionController {
         criminalProfessionService.save(criminalProfession);
         return "redirect:/criminalProfession/showAll";
     }
+
+    @GetMapping("/{professionId}/edit")
+    public String editProfessionForm(@PathVariable("professionId") Integer professionId, Model model) {
+        CriminalProfession profession = criminalProfessionService.getCriminalProfessionsById(professionId);
+        model.addAttribute("criminalProfession", profession);
+        return "criminalProfession/editProfession";
+    }
+
+    @PatchMapping("/{professionId}/edit")
+    public String updateProfession(@PathVariable("professionId") Integer professionId, @ModelAttribute("criminalProfession") CriminalProfession updatedProfession, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "criminalProfession/editProfession";
+        }
+        CriminalProfession profession = criminalProfessionService.getCriminalProfessionsById(professionId);
+        profession.setName(updatedProfession.getName());
+        criminalProfessionService.save(profession);
+        return "redirect:/criminalProfession/showAll";
+    }
+
 }

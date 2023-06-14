@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Criminal Profession</title>
+</head>
+<body>
+<h1>Edit Criminal Profession</h1>
+<form th:action="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}" method="post">
+  <input type="hidden" name="_method" value="PATCH" />
+  <label for="name">Profession Name:</label>
+  <input type="text" id="name" name="name" th:value="${criminalProfession.name}" />
+  <button type="submit">Update Profession</button>
+</form>
+</body>
+</html>
