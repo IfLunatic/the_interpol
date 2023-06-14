@@ -18,7 +18,8 @@ public class GroupController {
 
     @GetMapping("/showAll")
     public String showGroups(Model model) {
-        model.addAttribute("groups", groupService.getGroups());
+        List<Group> groups = groupService.getGroups();
+        model.addAttribute("groups", groups);
         return "group/showAll";
     }
 
@@ -41,6 +42,24 @@ public class GroupController {
         if (bindingResult.hasErrors()) {
             return "group/newGroup";
         }
+        groupService.save(group);
+        return "redirect:/group/showAll";
+    }
+
+    @GetMapping("/{groupId}/edit")
+    public String editGroupForm(@PathVariable("groupId") Integer groupId, Model model) {
+        Group group = groupService.getGroupById(groupId);
+        model.addAttribute("group", group);
+        return "group/editGroup";
+    }
+
+    @PatchMapping("/{groupId}")
+    public String updateGroup(@PathVariable("groupId") Integer groupId, @ModelAttribute("group") Group updatedGroup, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "group/editGroup";
+        }
+        Group group = groupService.getGroupById(groupId);
+        group.setGroupName(updatedGroup.getGroupName());
         groupService.save(group);
         return "redirect:/group/showAll";
     }

@@ -6,7 +6,10 @@
 </head>
 <body>
 <div th:each="group : ${groups}">
-    <a th:href="@{'/group/' + ${group.id}}" th:text="${group.id + ' ' +  group.groupName}">Group</a>
+    <p>
+        <a th:href="@{'/group/' + ${group.id}}" th:text="${group.id + ' ' +  group.groupName}">Group</a>
+        <a th:href="@{'/group/' + ${group.id} + '/edit'}">Edit</a>
+    </p>
 </div>
 <a href="/group/new">Create new group</a><br>
 <a href="/">Menu</a>
