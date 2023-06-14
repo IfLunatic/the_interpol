@@ -7,30 +7,32 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ua.iflunatic.the_interpol.entities.CriminalProfession;
 import ua.iflunatic.the_interpol.services.CriminalProfessionService;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/criminalProfession")
 public class CriminalProfessionController {
     private final CriminalProfessionService criminalProfessionService;
 
-    @GetMapping("/criminalProfession/showAll")
-    private String showCriminalsProfessions(Model model) {
+    @GetMapping("/showAll")
+    public String showCriminalsProfessions(Model model) {
         model.addAttribute("criminalsProfession", criminalProfessionService.getCriminalProfessions());
-        return "/criminalProfession/showAll";
+        return "criminalProfession/showAll";
     }
 
-    @GetMapping("criminalProfession/new")
+    @GetMapping("/new")
     public String newCriminalProfession(Model model) {
-        model.addAttribute("criminalsProfession", criminalProfessionService.getCriminalProfessions());
-        return "/criminalProfession/newProfession";
+        model.addAttribute("criminalProfession", new CriminalProfession());
+        return "criminalProfession/newProfession";
     }
 
-    @PostMapping("criminalProfession/newProfession")
-    public String create(@ModelAttribute("criminal") CriminalProfession criminalProfession, BindingResult bindingResult) {
+    @PostMapping("/new")
+    public String create(@ModelAttribute("criminalProfession") CriminalProfession criminalProfession, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/criminalProfession/newProfession";
+            return "criminalProfession/newProfession";
         }
         criminalProfessionService.save(criminalProfession);
         return "redirect:/criminalProfession/showAll";

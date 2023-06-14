@@ -7,28 +7,30 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ua.iflunatic.the_interpol.entities.Group;
 import ua.iflunatic.the_interpol.services.GroupService;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/group")
 public class GroupController {
     private final GroupService groupService;
 
-    @GetMapping("/group/showAll")
-    private String showGroup(Model model) {
-        model.addAttribute("group", groupService.getGroups());
-        return "/group/showAll";
+    @GetMapping("/showAll")
+    public String showGroups(Model model) {
+        model.addAttribute("groups", groupService.getGroups());
+        return "group/showAll";
     }
 
-    @GetMapping("group/new")
+    @GetMapping("/new")
     public String newGroup(Model model) {
-        model.addAttribute("group", groupService.getGroups());
+        model.addAttribute("group", new Group());
         return "group/newGroup";
     }
 
-    @PostMapping("group/newGroup")
-    public String create(@ModelAttribute("criminal") Group group, BindingResult bindingResult) {
+    @PostMapping("/newGroup")
+    public String create(@ModelAttribute("group") Group group, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "group/newGroup";
         }

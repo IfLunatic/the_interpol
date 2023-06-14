@@ -27,6 +27,10 @@ public class Language {
     @OneToMany(mappedBy = "language", orphanRemoval = true)
     private List<Criminal> criminals = new ArrayList<>();
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return getName();
