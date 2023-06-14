@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Nationality</title>
+</head>
+<body>
+<h1>Edit Nationality</h1>
+<form th:action="@{/nationality/{nationalityId}(nationalityId=${nationality.id})}" method="post">
+  <input type="hidden" name="_method" value="PATCH" />
+  <label for="name">Nationality Name:</label>
+  <input type="text" id="name" name="name" th:value="${nationality.name}" />
+  <button type="submit">Update Nationality</button>
+</form>
+</body>
+</html>

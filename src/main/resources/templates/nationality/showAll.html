@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nationalities</title>
+</head>
+<body>
+<div th:each="nationality : ${nationalities}">
+    <p>
+        <a th:href="@{'/nationality/' + ${nationality.id}}" th:text="${nationality.id + ' ' + nationality.name}">Nationality</a>
+        <a th:href="@{'/nationality/' + ${nationality.id} + '/edit'}">Edit</a>
+    </p>
+</div>
+<a href="/nationality/new">Create new nationality</a><br>
+<a href="/">Menu</a>
+</body>
+</html>

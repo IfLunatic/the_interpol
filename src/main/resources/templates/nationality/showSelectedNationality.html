@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nationality Details</title>
+</head>
+<body>
+<h1>Nationality: <span th:text="${nationality.name}"></span></h1>
+<ul>
+    <li th:each="criminal : ${nationality.criminals}">
+        <a th:href="@{'/criminals/' + ${criminal.id}}" th:text="${criminal.name}"></a>
+    </li>
+</ul>
+<a href="/nationality/new">Create new nationality</a><br>
+<a href="/">Menu</a>
+</body>
+</html>
