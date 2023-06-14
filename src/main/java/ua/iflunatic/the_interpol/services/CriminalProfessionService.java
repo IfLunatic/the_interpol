@@ -22,4 +22,8 @@ public class CriminalProfessionService {
     public void save(CriminalProfession criminalProfession) {
         criminalProfessionRepository.save(criminalProfession);
     }
+
+    public CriminalProfession getCriminalProfessionsById(Integer professionId) {
+        return criminalProfessionRepository.findById(professionId).orElse(null);
+    }
 }

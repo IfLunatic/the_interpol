@@ -2,6 +2,7 @@ package ua.iflunatic.the_interpol.services;
 
 import org.springframework.stereotype.Service;
 import ua.iflunatic.the_interpol.entities.Criminal;
+import ua.iflunatic.the_interpol.entities.CriminalProfession;
 import ua.iflunatic.the_interpol.repositories.CriminalRepository;
 
 import java.util.List;
@@ -35,5 +36,9 @@ public class CriminalService {
 
     public void delete(int id) {
         criminalRepository.deleteById(id);
+    }
+
+    public List<Criminal> getCriminalsByProfession(CriminalProfession criminalProfession) {
+        return criminalRepository.findByProfession(criminalProfession);
     }
 }

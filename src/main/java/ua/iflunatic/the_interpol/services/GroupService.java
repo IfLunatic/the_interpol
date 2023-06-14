@@ -1,7 +1,6 @@
 package ua.iflunatic.the_interpol.services;
 
 import org.springframework.stereotype.Service;
-import ua.iflunatic.the_interpol.entities.CriminalProfession;
 import ua.iflunatic.the_interpol.entities.Group;
 import ua.iflunatic.the_interpol.repositories.GroupRepository;
 

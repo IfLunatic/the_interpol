@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criminals by Profession</title>
+</head>
+<body>
+<h1>Profession: <span th:text="${profession.Name}"></span></h1>
+<ul>
+    <li th:each="criminal : ${criminals}">
+        <a th:href="@{/criminals/{id}(id=${criminal.id})}" th:text="${criminal.name}"></a>
+    </li>
+</ul>
+<a href="/">Menu</a>
+</body>
+</html>
