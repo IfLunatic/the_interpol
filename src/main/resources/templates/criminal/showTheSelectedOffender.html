@@ -22,9 +22,9 @@
 <p th:text="'Profession: ' + ${criminal.profession}">VALUE</p>
 <p th:text="'Language: ' + ${criminal.language}">VALUE</p>
 <button>
-<a th:href="@{/{id}/editCriminal(id=${criminal.id})}">Edit</a>
+    <a th:href="@{/criminals/{id}/edit(id=${criminal.id})}">Edit</a>
 </button>
-<form th:method="DELETE" th:action="@{/{id}(id=${criminal.getId()})}">
+<form th:method="DELETE" th:action="@{/criminals/{id}(id=${criminal.id})}">
     <input type="submit" value="Delete"/>
 </form>
 <a href="/">Menu</a>

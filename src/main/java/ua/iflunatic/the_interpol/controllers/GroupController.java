@@ -21,16 +21,16 @@ public class GroupController {
         return "/group/showAll";
     }
 
-    @GetMapping("/group/new")
+    @GetMapping("group/new")
     public String newGroup(Model model) {
         model.addAttribute("group", groupService.getGroups());
-        return "/group/newGroup";
+        return "group/newGroup";
     }
 
-    @PostMapping("/group/newGroup")
+    @PostMapping("group/newGroup")
     public String create(@ModelAttribute("criminal") Group group, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/group/newGroup";
+            return "group/newGroup";
         }
         groupService.save(group);
         return "redirect:/group/showAll";

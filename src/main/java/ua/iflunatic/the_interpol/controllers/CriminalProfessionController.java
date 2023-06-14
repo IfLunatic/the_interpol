@@ -21,13 +21,13 @@ public class CriminalProfessionController {
         return "/criminalProfession/showAll";
     }
 
-    @GetMapping("/criminalProfession/new")
+    @GetMapping("criminalProfession/new")
     public String newCriminalProfession(Model model) {
         model.addAttribute("criminalsProfession", criminalProfessionService.getCriminalProfessions());
         return "/criminalProfession/newProfession";
     }
 
-    @PostMapping("/criminalProfession/newProfession")
+    @PostMapping("criminalProfession/newProfession")
     public String create(@ModelAttribute("criminal") CriminalProfession criminalProfession, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/criminalProfession/newProfession";

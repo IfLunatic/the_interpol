@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Criminal</title>
+    <meta charset="UTF-8">
+    <title>Edit criminal</title>
 </head>
 <body>
-<h2>Create Criminal</h2>
-<form method="post" th:action="@{/criminals}" th:object="${criminal}">
+<form method="POST" th:action="@{/criminals/{id}(id=${criminal.id})}" th:object="${criminal}">
+    <input type="hidden" name="_method" value="PATCH"/>
     <label for="surname">Surname:</label>
     <input type="text" th:field="*{surname}" id="surname"/>
     <div style="color:red" th:errors="*{surname}">Surname Error</div>
@@ -66,7 +67,7 @@
     <label for="profession">Profession:</label>
     <select th:field="*{profession}" id="profession">
         <option value="">Select Profession</option>
-        <option th:each="profession : ${professions}" th:value="${profession.getId()}" th:text="${profession.getName()}">Profession Name</option>
+        <option th:each="profession : ${professions}" th:value="${profession.id}" th:text="${profession.name}">Profession Name</option>
     </select>
     <div style="color:red" th:errors="*{profession}">Profession Error</div>
     <br/>
@@ -77,9 +78,7 @@
     </select>
     <div style="color:red" th:errors="*{language}">Language Error</div>
     <br/>
-
-    <input type="submit" value="Create!"/>
+    <input type="submit" value="Update!"/>
 </form>
-<a href="/">Menu</a>
 </body>
 </html>
