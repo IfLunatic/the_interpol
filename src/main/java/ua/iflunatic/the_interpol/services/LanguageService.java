@@ -30,8 +30,4 @@ public class LanguageService {
     public Language save(Language language) {
         return languageRepository.save(language);
     }
-
-    public void deleteLanguageById(Integer id) {
-        languageRepository.deleteById(id);
-    }
 }

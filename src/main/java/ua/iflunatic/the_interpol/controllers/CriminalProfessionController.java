@@ -1,7 +1,6 @@
 package ua.iflunatic.the_interpol.controllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -67,5 +66,4 @@ public class CriminalProfessionController {
         criminalProfessionService.save(profession);
         return "redirect:/criminalProfession/showAll";
     }
-
 }
