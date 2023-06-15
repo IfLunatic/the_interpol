@@ -64,10 +64,11 @@ public class CriminalController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("criminal") Criminal criminal, BindingResult bindingResult,
-                         @PathVariable("id") int id) {
+                         @PathVariable("id") int id, @RequestParam("archived") boolean archived) {
         if (bindingResult.hasErrors())
             return "criminal/editCriminal";
 
+        criminal.setArchived(archived);
         criminalService.update(id, criminal);
         return "redirect:/criminals";
     }

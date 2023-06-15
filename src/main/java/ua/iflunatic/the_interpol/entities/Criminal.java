@@ -72,6 +72,9 @@ public class Criminal {
     @JoinColumn(name = "nationality_id")
     private Nationality nationality;
 
+    @Column(name = "archived", nullable = false)
+    private boolean archived;
+
     @Override
     public String toString() {
         return "Criminal{" +

@@ -21,6 +21,7 @@
 <p th:text="'Band(group): ' + ${criminal.group}">VALUE</p>
 <p th:text="'Profession: ' + ${criminal.profession}">VALUE</p>
 <p th:text="'Language: ' + ${criminal.language}">VALUE</p>
+<p th:text="'Archived: ' + ${criminal.archived ? 'Yes' : 'No'}">VALUE</p>
 <button>
     <a th:href="@{/criminals/{id}/edit(id=${criminal.id})}">Edit</a>
 </button>
