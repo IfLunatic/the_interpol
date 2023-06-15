@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtered Criminals</title>
+</head>
+<body>
+<h1>Filtered Criminals</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Surname</th>
+    <th>Name</th>
+    <th>Nickname</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="criminal : ${filteredCriminals}">
+    <td th:text="${criminal.surname}"></td>
+    <td th:text="${criminal.name}"></td>
+    <td th:text="${criminal.nickname}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

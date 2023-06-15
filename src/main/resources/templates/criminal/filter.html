@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Filter Criminals</title>
+</head>
+<body>
+<h1>Filter Criminals</h1>
+<form th:action="@{/filter}" method="get" th:object="${filters}">
+  <label for="surname">Surname:</label>
+  <input type="text" id="surname" name="surname" th:value="${filters.surname}">
+  <br>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" th:value="${filters.name}">
+  <br>
+  <label for="nickname">Nickname:</label>
+  <input type="text" id="nickname" name="nickname" th:value="${filters.nickname}">
+  <br>
+  <label for="height">Height:</label>
+  <input type="number" id="height" name="height" th:value="${filters.height}">
+  <br>
+  <label for="hairColour">Hair Colour:</label>
+  <input type="text" id="hairColour" name="hairColour" th:value="${filters.hairColour}">
+  <br>
+  <label for="eyeColour">Eye Colour:</label>
+  <input type="text" id="eyeColour" name="eyeColour" th:value="${filters.eyeColour}">
+  <br>
+  <label for="specialFeatures">Special Features:</label>
+  <input type="text" id="specialFeatures" name="specialFeatures" th:value="${filters.specialFeatures}">
+  <br>
+  <label for="placeOfOrigin">Place of Origin:</label>
+  <input type="text" id="placeOfOrigin" name="placeOfOrigin" th:value="${filters.placeOfOrigin}">
+  <br>
+  <label for="dateOfBirth">Date of Birth:</label>
+  <input type="text" id="dateOfBirth" name="dateOfBirth" th:value="${filters.dateOfBirth}">
+  <br>
+  <label for="lastPlaceOfResidence">Last Place of Residence:</label>
+  <input type="text" id="lastPlaceOfResidence" name="lastPlaceOfResidence" th:value="${filters.lastPlaceOfResidence}">
+  <br>
+  <label for="lastCase">Last Case:</label>
+  <input type="text" id="lastCase" name="lastCase" th:value="${filters.lastCase}">
+  <br>
+  <label for="group">Group:</label>
+  <select id="group" name="group">
+    <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}" th:selected="${filters.group != null && filters.group.id == group.id}"></option>
+  </select>
+  <br>
+  <label for="profession">Profession:</label>
+  <select id="profession" name="profession">
+    <option th:each="profession : ${professions}" th:value="${profession.id}" th:text="${profession.name}" th:selected="${filters.profession != null && filters.profession.id == profession.id}"></option>
+  </select>
+  <br>
+  <label for="language">Language:</label>
+  <select id="language" name="language">
+    <option th:each="language : ${languages}" th:value="${language.id}" th:text="${language.name}" th:selected="${filters.language != null && filters.language.id == language.id}"></option>
+  </select>
+  <br>
+  <label for="nationality">Nationality:</label>
+  <input type="text" id="nationality" name="nationality" th:value="${filters.nationality}">
+  <br>
+  <label for="includeArchived">Include Archived:</label>
+  <input type="checkbox" id="includeArchived" name="includeArchived" value="true" th:checked="${includeArchived}">
+  <br>
+  <button type="submit">Filter</button>
+</form>
+</body>
+</html>

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ua.iflunatic.the_interpol.entities.Criminal;
 import ua.iflunatic.the_interpol.services.*;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/criminals")
@@ -64,12 +66,13 @@ public class CriminalController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("criminal") Criminal criminal, BindingResult bindingResult,
-                         @PathVariable("id") int id, @RequestParam("archived") boolean archived) {
+                         @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "criminal/editCriminal";
 
-        criminal.setArchived(archived);
+        criminal.isArchived();
         criminalService.update(id, criminal);
+
         return "redirect:/criminals";
     }
 
@@ -78,5 +81,32 @@ public class CriminalController {
         criminalService.delete(id);
         return "redirect:/criminals";
     }
-}
 
+    @GetMapping("/filter")
+    public String showFilterPage() {
+        return "criminal/filter";
+    }
+
+    @PostMapping("/filter")
+    public String filterCriminals(@RequestParam(required = false) String surname,
+                                  @RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String nickname,
+                                  @RequestParam(required = false) Integer height,
+                                  @RequestParam(required = false) String hairColour,
+                                  @RequestParam(required = false) String eyeColour,
+                                  @RequestParam(required = false) String specialFeatures,
+                                  @RequestParam(required = false) String placeOfOrigin,
+                                  @RequestParam(required = false) String dateOfBirth,
+                                  @RequestParam(required = false) String lastPlaceOfResidence,
+                                  @RequestParam(required = false) String lastCase,
+                                  @RequestParam(required = false) Boolean includeArchived,
+                                  @RequestParam(required = false) Long groupId,
+                                  @RequestParam(required = false) Long professionId,
+                                  @RequestParam(required = false) Long languageId,
+                                  @RequestParam(required = false) String nationality,
+                                  Model model) {
+        List<Criminal> filteredCriminals = criminalService.filterCriminals(surname, name, nickname, height, hairColour, eyeColour, specialFeatures, placeOfOrigin, dateOfBirth, lastPlaceOfResidence, lastCase, includeArchived, groupId, professionId, languageId, nationality, includeArchived);
+        model.addAttribute("filteredCriminals", filteredCriminals);
+        return "criminal/filteredCriminals";
+    }
+}
