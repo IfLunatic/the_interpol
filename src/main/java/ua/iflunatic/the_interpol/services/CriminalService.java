@@ -42,7 +42,7 @@ public class CriminalService {
         return criminalRepository.findByProfession(criminalProfession);
     }
 
-    public List<Criminal> filterCriminals(String surname, String name, String nickname, Integer height, String hairColour, String eyeColour, String specialFeatures, String placeOfOrigin, String dateOfBirth, String lastPlaceOfResidence, String lastCase, Boolean archived, Long groupId, Long professionId, Long languageId, String nationality, Boolean includeArchived) {
-        return criminalRepository.filterCriminals(surname, name, nickname, height, hairColour, eyeColour, specialFeatures, placeOfOrigin, dateOfBirth, lastPlaceOfResidence, lastCase, archived, includeArchived, groupId, professionId, languageId, nationality);
+    public List<Criminal> filterCriminals(String surname, String name, String nickname, Integer height, String hairColour, String eyeColour, String specialFeatures, String placeOfOrigin, String dateOfBirth, String lastPlaceOfResidence, String lastCase, Boolean archived, Integer groupId, Integer professionId, Integer languageId, Integer nationalityId, Boolean includeArchived) {
+        return criminalRepository.filterCriminals(surname, name, nickname, height, hairColour, eyeColour, specialFeatures, placeOfOrigin, dateOfBirth, lastPlaceOfResidence, lastCase, archived, groupId, professionId, languageId, nationalityId, includeArchived);
     }
 }

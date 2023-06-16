@@ -83,29 +83,36 @@ public class CriminalController {
     }
 
     @GetMapping("/filter")
-    public String showFilterPage() {
+    public String showFilterPage(Model model) {
+        model.addAttribute("criminal", new Criminal());
+        model.addAttribute("groups", groupService.getGroups());
+        model.addAttribute("languages", languageService.getLanguages());
+        model.addAttribute("professions", criminalProfessionService.getCriminalProfessions());
+        model.addAttribute("nationalities", nationalityService.getNationalities());
         return "criminal/filter";
     }
 
     @PostMapping("/filter")
-    public String filterCriminals(@RequestParam(required = false) String surname,
-                                  @RequestParam(required = false) String name,
-                                  @RequestParam(required = false) String nickname,
-                                  @RequestParam(required = false) Integer height,
-                                  @RequestParam(required = false) String hairColour,
-                                  @RequestParam(required = false) String eyeColour,
-                                  @RequestParam(required = false) String specialFeatures,
-                                  @RequestParam(required = false) String placeOfOrigin,
-                                  @RequestParam(required = false) String dateOfBirth,
-                                  @RequestParam(required = false) String lastPlaceOfResidence,
-                                  @RequestParam(required = false) String lastCase,
-                                  @RequestParam(required = false) Boolean includeArchived,
-                                  @RequestParam(required = false) Long groupId,
-                                  @RequestParam(required = false) Long professionId,
-                                  @RequestParam(required = false) Long languageId,
-                                  @RequestParam(required = false) String nationality,
-                                  Model model) {
-        List<Criminal> filteredCriminals = criminalService.filterCriminals(surname, name, nickname, height, hairColour, eyeColour, specialFeatures, placeOfOrigin, dateOfBirth, lastPlaceOfResidence, lastCase, includeArchived, groupId, professionId, languageId, nationality, includeArchived);
+    public String filterCriminals(@ModelAttribute Criminal criminal, Model model) {
+        List<Criminal> filteredCriminals = criminalService.filterCriminals(
+                criminal.getSurname(),
+                criminal.getName(),
+                criminal.getNickname(),
+                criminal.getHeight(),
+                criminal.getHairColour(),
+                criminal.getEyeColour(),
+                criminal.getSpecialFeatures(),
+                criminal.getPlaceOfOrigin(),
+                criminal.getDateOfBirth(),
+                criminal.getLastPlaceOfResidence(),
+                criminal.getLastCase(),
+                criminal.isArchived(),
+                criminal.getGroup().getId(),
+                criminal.getProfession().getId(),
+                criminal.getLanguage().getId(),
+                criminal.getNationality().getId(),
+                criminal.isArchived()
+        );
         model.addAttribute("filteredCriminals", filteredCriminals);
         return "criminal/filteredCriminals";
     }
