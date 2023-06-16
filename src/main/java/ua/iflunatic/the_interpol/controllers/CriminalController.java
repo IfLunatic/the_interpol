@@ -96,36 +96,12 @@ public class CriminalController {
     @PostMapping("/filteredCriminals")
     public String filterCriminals(@Valid @ModelAttribute Criminal criminal, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            // Якщо є помилки валідації, додайте їх до моделі та поверніть форму
             model.addAttribute("filteredCriminals", criminal);
-            return "criminal/filter";
+            return "criminal/filteredCriminals"; // Замініть "criminal/form" на шлях до вашого представлення форми
         }
 
-        // Перевірка на кількість вибраних характеристик
-        int selectedCharacteristics = countSelectedCharacteristics(
-                criminal.getSurname(),
-                criminal.getName(),
-                criminal.getNickname(),
-                criminal.getHeight(),
-                criminal.getHairColour(),
-                criminal.getEyeColour(),
-                criminal.getSpecialFeatures(),
-                criminal.getPlaceOfOrigin(),
-                criminal.getDateOfBirth(),
-                criminal.getLastPlaceOfResidence(),
-                criminal.getLastCase(),
-                criminal.isArchived(),
-                criminal.getGroup() != null ? criminal.getGroup().getId() : null,
-                criminal.getProfession() != null ? criminal.getProfession().getId() : null,
-                criminal.getLanguage() != null ? criminal.getLanguage().getId() : null,
-                criminal.getNationality() != null ? criminal.getNationality().getId() : null
-        );
-
-        if (selectedCharacteristics < 2) {
-            bindingResult.rejectValue("characteristics", "error.criminal", "Select at least two characteristics");
-            model.addAttribute("filteredCriminals", criminal);
-            return "criminal/filter";
-        }
-
+        // Виконайте фільтрацію та інші дії, якщо немає помилок валідації
         List<Criminal> filteredCriminals = criminalService.filterCriminals(
                 criminal.getSurname(),
                 criminal.getName(),
@@ -146,15 +122,5 @@ public class CriminalController {
         );
         model.addAttribute("filteredCriminals", filteredCriminals);
         return "criminal/filteredCriminals";
-    }
-
-    private int countSelectedCharacteristics(Object... characteristics) {
-        int count = 0;
-        for (Object characteristic : characteristics) {
-            if (characteristic != null) {
-                count++;
-            }
-        }
-        return count;
     }
 }

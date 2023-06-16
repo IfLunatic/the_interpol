@@ -34,5 +34,5 @@ public interface CriminalRepository extends JpaRepository<Criminal, Integer> {
                                    @Param("placeOfOrigin") String placeOfOrigin, @Param("dateOfBirth") String dateOfBirth, @Param("lastPlaceOfResidence") String lastPlaceOfResidence,
                                    @Param("lastCase") String lastCase, @Param("archived") Boolean archived, @Param("groupId") Integer groupId,
                                    @Param("professionId") Integer professionId, @Param("languageId") Integer languageId,
-                                   @Param("nationalityId") Integer nationalityId, @Param("includeArchived") Boolean includeArchived);
+                                   @Param("nationalityId") Integer nationalityId);
 }
