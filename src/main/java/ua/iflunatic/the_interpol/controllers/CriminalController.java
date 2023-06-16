@@ -1,6 +1,7 @@
 package ua.iflunatic.the_interpol.controllers;
 
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -92,8 +93,39 @@ public class CriminalController {
         return "criminal/filter";
     }
 
-    @PostMapping("/filter")
-    public String filterCriminals(@ModelAttribute Criminal criminal, Model model) {
+    @PostMapping("/filteredCriminals")
+    public String filterCriminals(@Valid @ModelAttribute Criminal criminal, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("filteredCriminals", criminal);
+            return "criminal/filter";
+        }
+
+        // Перевірка на кількість вибраних характеристик
+        int selectedCharacteristics = countSelectedCharacteristics(
+                criminal.getSurname(),
+                criminal.getName(),
+                criminal.getNickname(),
+                criminal.getHeight(),
+                criminal.getHairColour(),
+                criminal.getEyeColour(),
+                criminal.getSpecialFeatures(),
+                criminal.getPlaceOfOrigin(),
+                criminal.getDateOfBirth(),
+                criminal.getLastPlaceOfResidence(),
+                criminal.getLastCase(),
+                criminal.isArchived(),
+                criminal.getGroup() != null ? criminal.getGroup().getId() : null,
+                criminal.getProfession() != null ? criminal.getProfession().getId() : null,
+                criminal.getLanguage() != null ? criminal.getLanguage().getId() : null,
+                criminal.getNationality() != null ? criminal.getNationality().getId() : null
+        );
+
+        if (selectedCharacteristics < 2) {
+            bindingResult.rejectValue("characteristics", "error.criminal", "Select at least two characteristics");
+            model.addAttribute("filteredCriminals", criminal);
+            return "criminal/filter";
+        }
+
         List<Criminal> filteredCriminals = criminalService.filterCriminals(
                 criminal.getSurname(),
                 criminal.getName(),
@@ -107,13 +139,22 @@ public class CriminalController {
                 criminal.getLastPlaceOfResidence(),
                 criminal.getLastCase(),
                 criminal.isArchived(),
-                criminal.getGroup().getId(),
-                criminal.getProfession().getId(),
-                criminal.getLanguage().getId(),
-                criminal.getNationality().getId(),
-                criminal.isArchived()
+                criminal.getGroup() != null ? criminal.getGroup().getId() : null,
+                criminal.getProfession() != null ? criminal.getProfession().getId() : null,
+                criminal.getLanguage() != null ? criminal.getLanguage().getId() : null,
+                criminal.getNationality() != null ? criminal.getNationality().getId() : null
         );
         model.addAttribute("filteredCriminals", filteredCriminals);
         return "criminal/filteredCriminals";
+    }
+
+    private int countSelectedCharacteristics(Object... characteristics) {
+        int count = 0;
+        for (Object characteristic : characteristics) {
+            if (characteristic != null) {
+                count++;
+            }
+        }
+        return count;
     }
 }
