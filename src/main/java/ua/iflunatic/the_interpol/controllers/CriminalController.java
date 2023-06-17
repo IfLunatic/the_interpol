@@ -96,12 +96,11 @@ public class CriminalController {
     @PostMapping("/filteredCriminals")
     public String filterCriminals(@Valid @ModelAttribute Criminal criminal, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            // Якщо є помилки валідації, додайте їх до моделі та поверніть форму
+
             model.addAttribute("filteredCriminals", criminal);
-            return "criminal/filteredCriminals"; // Замініть "criminal/form" на шлях до вашого представлення форми
+            return "criminal/filteredCriminals"; 
         }
 
-        // Виконайте фільтрацію та інші дії, якщо немає помилок валідації
         List<Criminal> filteredCriminals = criminalService.filterCriminals(
                 criminal.getSurname(),
                 criminal.getName(),
