@@ -15,10 +15,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="person : ${filteredCriminals}">
-    <td th:text="${person.surname}"></td>
-    <td th:text="${person.name}"></td>
-    <td th:text="${person.nickname}"></td>
+  <tr th:each="entity : ${filteredCriminals}">
+    <td th:text="${entity.surname}"></td>
+    <td th:text="${entity.name}"></td>
+    <td th:text="${entity.nickname}"></td>
   </tr>
   </tbody>
 </table>
