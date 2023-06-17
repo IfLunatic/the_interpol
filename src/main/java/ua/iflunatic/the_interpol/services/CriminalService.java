@@ -53,10 +53,8 @@ public class CriminalService {
                                           String lastCase, boolean isArchived, Integer groupId, Integer professionId,
                                           Integer languageId, Integer nationalityId) {
 
-        List<Criminal> filteredCriminals = criminalRepository.filterCriminals(surname, name, nickname, height,
+        return criminalRepository.filterCriminals(surname, name, nickname, height,
                 hairColour, eyeColour, specialFeatures, placeOfOrigin, dateOfBirth, lastPlaceOfResidence,
                 lastCase, isArchived, groupId, professionId, languageId, nationalityId);
-
-        return filteredCriminals;
     }
 }

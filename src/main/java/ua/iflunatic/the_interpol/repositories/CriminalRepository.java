@@ -11,18 +11,19 @@ import java.util.List;
 public interface CriminalRepository extends JpaRepository<Criminal, Integer> {
     List<Criminal> findByProfession(CriminalProfession criminalProfession);
 
+
     @Query("SELECT c FROM Criminal c " +
-            "WHERE (:surname IS NULL OR c.surname = :surname) " +
-            "AND (:name IS NULL OR c.name = :name) " +
-            "AND (:nickname IS NULL OR c.nickname = :nickname) " +
+            "WHERE (:surname IS NULL OR c.surname LIKE :surname) " +
+            "AND (:name IS NULL OR c.name LIKE :name) " +
+            "AND (:nickname IS NULL OR c.nickname LIKE :nickname) " +
             "AND (:height IS NULL OR c.height = :height) " +
-            "AND (:hairColour IS NULL OR c.hairColour = :hairColour) " +
-            "AND (:eyeColour IS NULL OR c.eyeColour = :eyeColour) " +
-            "AND (:specialFeatures IS NULL OR c.specialFeatures = :specialFeatures) " +
-            "AND (:placeOfOrigin IS NULL OR c.placeOfOrigin = :placeOfOrigin) " +
-            "AND (:dateOfBirth IS NULL OR c.dateOfBirth = :dateOfBirth) " +
-            "AND (:lastPlaceOfResidence IS NULL OR c.lastPlaceOfResidence = :lastPlaceOfResidence) " +
-            "AND (:lastCase IS NULL OR c.lastCase = :lastCase) " +
+            "AND (:hairColour IS NULL OR c.hairColour LIKE :hairColour) " +
+            "AND (:eyeColour IS NULL OR c.eyeColour LIKE :eyeColour) " +
+            "AND (:specialFeatures IS NULL OR c.specialFeatures LIKE :specialFeatures) " +
+            "AND (:placeOfOrigin IS NULL OR c.placeOfOrigin LIKE :placeOfOrigin) " +
+            "AND (:dateOfBirth IS NULL OR c.dateOfBirth LIKE :dateOfBirth) " +
+            "AND (:lastPlaceOfResidence IS NULL OR c.lastPlaceOfResidence LIKE :lastPlaceOfResidence) " +
+            "AND (:lastCase IS NULL OR c.lastCase LIKE :lastCase) " +
             "AND (:archived IS NULL OR c.archived = :archived) " +
             "AND (:groupId IS NULL OR c.group.id = :groupId) " +
             "AND (:professionId IS NULL OR c.profession.id = :professionId) " +

@@ -41,7 +41,7 @@ public class CriminalController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("criminal")  Criminal criminal, BindingResult bindingResult) {
+    public String create(@ModelAttribute("criminal") Criminal criminal, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "criminal/createCriminal";
         }
@@ -96,24 +96,22 @@ public class CriminalController {
     @PostMapping("/filteredCriminals")
     public String filterCriminals(@Valid @ModelAttribute Criminal criminal, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            // Якщо є помилки валідації, додайте їх до моделі та поверніть форму
             model.addAttribute("filteredCriminals", criminal);
-            return "criminal/filteredCriminals"; // Замініть "criminal/form" на шлях до вашого представлення форми
+            return "criminal/filteredCriminals";
         }
 
-        // Виконайте фільтрацію та інші дії, якщо немає помилок валідації
         List<Criminal> filteredCriminals = criminalService.filterCriminals(
-                criminal.getSurname(),
-                criminal.getName(),
-                criminal.getNickname(),
+                getLikeString(getStringOrEmpty(criminal.getSurname())),
+                getLikeString(getStringOrEmpty(criminal.getName())),
+                getLikeString(getStringOrEmpty(criminal.getNickname())),
                 criminal.getHeight(),
-                criminal.getHairColour(),
-                criminal.getEyeColour(),
-                criminal.getSpecialFeatures(),
-                criminal.getPlaceOfOrigin(),
-                criminal.getDateOfBirth(),
-                criminal.getLastPlaceOfResidence(),
-                criminal.getLastCase(),
+                getLikeString(getStringOrEmpty(criminal.getHairColour())),
+                getLikeString(getStringOrEmpty(criminal.getEyeColour())),
+                getLikeString(getStringOrEmpty(criminal.getSpecialFeatures())),
+                getLikeString(getStringOrEmpty(criminal.getPlaceOfOrigin())),
+                getLikeString(getStringOrEmpty(criminal.getDateOfBirth())),
+                getLikeString(getStringOrEmpty(criminal.getLastPlaceOfResidence())),
+                getLikeString(getStringOrEmpty(criminal.getLastCase())),
                 criminal.isArchived(),
                 criminal.getGroup() != null ? criminal.getGroup().getId() : null,
                 criminal.getProfession() != null ? criminal.getProfession().getId() : null,
@@ -122,5 +120,19 @@ public class CriminalController {
         );
         model.addAttribute("filteredCriminals", filteredCriminals);
         return "criminal/filteredCriminals";
+    }
+
+    private String getLikeString(String value) {
+        if (value == null) {
+            return null;
+        }
+        return "%" + value + "%";
+    }
+
+    private String getStringOrEmpty(String value) {
+        if (value != null && !value.isEmpty()) {
+            return value;
+        }
+        return null;
     }
 }
