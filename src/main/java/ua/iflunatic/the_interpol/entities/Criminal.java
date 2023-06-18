@@ -1,8 +1,9 @@
 package ua.iflunatic.the_interpol.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
+
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "criminal")
@@ -15,26 +16,33 @@ public class Criminal {
     @Column(name = "id")
     private Integer id;
 
+    @NotEmpty(message = "Surname should not be empty")
     private String surname;
 
+    @NotEmpty(message = "Name should not be empty")
     private String name;
 
-
+    @NotEmpty(message = "Nickname should not be empty")
     private String nickname;
 
+    @Min(value = 0, message = "Age should be greater than 0")
     private Integer height;
 
+    @NotEmpty(message = "Hair colour should not be empty")
     private String hairColour;
 
+    @NotEmpty(message = "Eye colour should not be empty")
     private String eyeColour;
 
     private String specialFeatures;
 
+    @NotEmpty(message = "Place of origin should not be empty")
     private String placeOfOrigin;
 
     @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Дата повинна бути записана у форматі (рік-місяць-день)")
     private String dateOfBirth;
 
+    @NotEmpty(message = "Last place of residence should not be empty")
     private String lastPlaceOfResidence;
 
     private String lastCase;

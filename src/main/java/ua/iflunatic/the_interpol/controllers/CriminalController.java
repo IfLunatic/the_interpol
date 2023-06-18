@@ -1,7 +1,7 @@
 package ua.iflunatic.the_interpol.controllers;
 
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,8 +41,12 @@ public class CriminalController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("criminal")  Criminal criminal, BindingResult bindingResult) {
+    public String create(@ModelAttribute("criminal") @Valid Criminal criminal, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("groups", groupService.getGroups());
+            model.addAttribute("languages", languageService.getLanguages());
+            model.addAttribute("professions", criminalProfessionService.getCriminalProfessions());
+            model.addAttribute("nationalities", nationalityService.getNationalities());
             return "criminal/createCriminal";
         }
         criminalService.save(criminal);
@@ -66,10 +70,15 @@ public class CriminalController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("criminal") Criminal criminal, BindingResult bindingResult,
-                         @PathVariable("id") int id) {
-        if (bindingResult.hasErrors())
+    public String update(@ModelAttribute("criminal") @Valid Criminal criminal, BindingResult bindingResult,
+                         @PathVariable("id") int id, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("groups", groupService.getGroups());
+            model.addAttribute("languages", languageService.getLanguages());
+            model.addAttribute("professions", criminalProfessionService.getCriminalProfessions());
+            model.addAttribute("nationalities", nationalityService.getNationalities());
             return "criminal/editCriminal";
+        }
 
         criminal.isArchived();
         criminalService.update(id, criminal);
