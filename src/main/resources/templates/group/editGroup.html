@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit Group</title>
+  <link rel="stylesheet" href="/edit.css?v=1">
 </head>
 <body>
-<h1>Edit Group</h1>
-<form th:action="@{/group/{groupId}(groupId=${group.id})}" method="post">
-  <input type="hidden" name="_method" value="PATCH" />
-  <label for="groupName">Group Name:</label>
-  <input type="text" id="groupName" name="groupName" th:value="${group.groupName}" />
-  <button type="submit">Update Group</button>
-</form>
+<div class="head-line">
+  <img src="/3724033.png" alt="Police badge" class="image-above">
+  <h1 class="h1">Edit Group</h1>
+</div>
+<hr>
+<div class="form-container">
+  <form th:action="@{/group/{groupId}(groupId=${group.id})}" method="post">
+    <input type="hidden" name="_method" value="PATCH" />
+    <label for="groupName">Group Name:</label>
+    <input type="text" id="groupName" name="groupName" th:value="${group.groupName}" />
+    <button type="submit">Update Group</button>
+  </form>
+</div>
+<hr>
+<div class="center-menu">
+  <a href="/group/showAll">Back to Groups</a>
+  <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,133 @@
+* {
+    background-color: #29335C;
+  }
+  
+  h1 {
+    color: #F3A712;
+    font-size: 50px;
+  }
+  
+  .image-above {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #A8C686;
+    font-size: 20px;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 17px;
+    border-width: 2px;
+    border-color: #A8C686;
+    background-color: #669BBC;
+    color: #F3A712;
+    border-style: solid;
+    border-radius: 25px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    background-color: #A8C686;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+  
+  input {
+    padding: 6px;
+    font-size: 20px;
+    border-width: 3px;
+    border-color: #F3A712;
+    background-color: #29335C;
+    color: #669BBC;
+    border-style: solid;
+    border-radius: 5px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  label {
+    font-size: 30px;
+    color: #A8C686;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .inner-div {
+    display: flex;
+    margin: 10px;
+  }
+  
+  select {
+    padding: 6px;
+    font-size: 20px;
+    border-width: 3px;
+    border-color: #F3A712;
+    background-color: #29335C;
+    color: #669BBC;
+    border-style: solid;
+    border-radius: 5px;
+  }
+  
+  select:focus {
+    outline: none;
+  }
+  
+  select option {
+    background-color: #29335C;
+    color: #669BBC;
+  }
+  
+  .select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #F3A712;
+    border-right: 2px solid #F3A712;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  
+  select:focus ~ .select-arrow {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  .filter-button {
+    margin-top: 20px;
+    text-align: center;
+  }

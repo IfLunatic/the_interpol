@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>New Language</title>
+    <link rel="stylesheet" href="/new.css?v=1">
 </head>
 <body>
-<form th:method="POST" th:action="@{/language/new}" th:object="${language}">
-    <label for="languageName">Language Name:</label>
-    <input type="text" th:field="${language.name}" id="languageName"/>
-    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-    <input type="submit" value="Create Language"/>
-</form>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">New Language</h1>
+</div>
+<hr>
+<div class="form-container">
+    <form th:method="POST" th:action="@{/language/new}" th:object="${language}">
+        <label for="languageName">Language Name:</label>
+        <input type="text" th:field="${language.name}" id="languageName"/>
+        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        <input type="submit" value="Create Language"/>
+    </form>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/language/showAll">Back to Languages</a>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

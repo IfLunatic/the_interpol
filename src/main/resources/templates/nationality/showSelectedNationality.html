@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Nationality Details</title>
+    <link rel="stylesheet" href="/showSelected.css?v=1">
 </head>
 <body>
-<h1>Nationality: <span th:text="${nationality.name}"></span></h1>
-<ul>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1>Nationality: <span th:text="${nationality.name}"></span></h1>
+</div>
+<hr>
+<ul class="criminals-list">
     <li th:each="criminal : ${nationality.criminals}">
         <a th:href="@{'/criminals/' + ${criminal.id}}" th:text="${criminal.name}"></a>
     </li>
 </ul>
-<a href="/nationality/new">Create new nationality</a><br>
-<a href="/">Menu</a>
+<div class="center-menu">
+    <a href="/nationality/new" class="menu-link">Create new nationality</a>
+</div>
+<a href="/" class="menu-link">Menu</a>
 </body>
 </html>

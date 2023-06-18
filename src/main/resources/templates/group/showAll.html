@@ -2,16 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Groups</title>
+    <link rel="stylesheet" href="/showAll.css?v=1">
 </head>
 <body>
-<div th:each="group : ${groups}">
-    <p>
-        <a th:href="@{'/group/' + ${group.id}}" th:text="${group.id + ' ' +  group.groupName}">Group</a>
-        <a th:href="@{'/group/' + ${group.id} + '/edit'}">Edit</a>
-    </p>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Groups</h1>
 </div>
-<a href="/group/new">Create new group</a><br>
-<a href="/">Menu</a>
+<hr>
+<div class="all">
+    <div th:each="group : ${groups}">
+        <p>
+            <a th:href="@{'/group/' + ${group.id}}" th:text="${group.groupName}">Group</a>
+            <a class="edit-button" th:href="@{'/group/' + ${group.id} + '/edit'}">Edit</a>
+        </p>
+    </div>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/group/new">Create new group</a><br>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

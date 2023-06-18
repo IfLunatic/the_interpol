@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit Language</title>
+    <link rel="stylesheet" href="/edit.css?v=1">
 </head>
 <body>
-<h1>Edit Language</h1>
-<form th:action="@{/language/{languageId}(languageId=${language.id})}" method="post">
-    <input type="hidden" name="_method" value="PATCH" />
-    <label for="name">Language Name:</label>
-    <input type="text" id="name" name="name" th:value="${language.name}" />
-    <button type="submit">Update Language</button>
-</form>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Edit Language</h1>
+</div>
+<hr>
+<div class="form-container">
+    <form th:action="@{/language/{languageId}(languageId=${language.id})}" method="post">
+        <input type="hidden" name="_method" value="PATCH" />
+        <label for="name">Language Name:</label>
+        <input type="text" id="name" name="name" th:value="${language.name}" />
+        <button type="submit">Update Language</button>
+    </form>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/language/showAll">Back to Languages</a>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

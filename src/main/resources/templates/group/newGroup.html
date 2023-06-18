@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/new.css?v=1">
 </head>
 <body>
-<form th:method="POST" th:action="@{/group/newGroup}" th:object="${group}">
-    <label for="name">Enter name:</label>
-    <input type="text" th:field="${group.groupName}" id="name"/>
-    <div style="color:red" th:if="${#fields.hasErrors('groupName')}" th:errors="*{groupName}">Name Error</div>
-    <input type="submit" value="Save"/>
-</form>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Create Group</h1>
+</div>
+<hr>
+<div class="form-container">
+    <form th:method="POST" th:action="@{/group/newGroup}" th:object="${group}">
+        <label for="name">Enter the name of the group:</label>
+        <input type="text" th:field="${group.groupName}" id="name"/>
+        <div class="error" th:if="${#fields.hasErrors('groupName')}" th:errors="*{groupName}">Name Error</div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/group/showAll">Back to Groups</a>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

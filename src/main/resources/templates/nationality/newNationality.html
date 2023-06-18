@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>New Nationality</title>
+    <link rel="stylesheet" href="/new.css?v=1">
 </head>
 <body>
-<form th:method="POST" th:action="@{/nationality/new}" th:object="${nationality}">
-    <label for="nationalityName">Nationality Name:</label>
-    <input type="text" th:field="${nationality.name}" id="nationalityName"/>
-    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-    <input type="submit" value="Create Nationality"/>
-</form>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Add New Nationality</h1>
+</div>
+<hr>
+<div class="form-container">
+    <form th:method="POST" th:action="@{/nationality/new}" th:object="${nationality}">
+        <label for="nationalityName">Nationality Name:</label>
+        <input type="text" th:field="${nationality.name}" id="nationalityName"/>
+        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        <input type="submit" value="Create Nationality"/>
+    </form>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/nationality/showAll">Back to Nationalities</a>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

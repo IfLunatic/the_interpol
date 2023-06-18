@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Nationalities</title>
+    <link rel="stylesheet" href="/showAll.css?v=1">
 </head>
 <body>
-<div th:each="nationality : ${nationalities}">
-    <p>
-        <a th:href="@{'/nationality/' + ${nationality.id}}" th:text="${nationality.id + ' ' + nationality.name}">Nationality</a>
-        <a th:href="@{'/nationality/' + ${nationality.id} + '/edit'}">Edit</a>
-    </p>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Nationalities</h1>
 </div>
-<a href="/nationality/new">Create new nationality</a><br>
-<a href="/">Menu</a>
+<hr>
+<div class="all">
+    <div th:each="nationality : ${nationalities}">
+        <p>
+            <a th:href="@{'/nationality/' + ${nationality.id}}" th:text="${nationality.name}">Nationality</a>
+            <a class="edit-button" th:href="@{'/nationality/' + ${nationality.id} + '/edit'}">Edit</a>
+        </p>
+    </div>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/nationality/new">Create new nationality</a><br>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

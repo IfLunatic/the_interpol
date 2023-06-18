@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Languages</title>
+    <link rel="stylesheet" href="/showAll.css?v=1">
 </head>
 <body>
-<div th:each="language : ${languages}">
-    <p>
-        <a th:href="@{'/language/' + ${language.id}}" th:text="${language.id + ' ' + language.name}">Language</a>
-        <a th:href="@{'/language/' + ${language.id} + '/edit'}">Edit</a>
-    </p>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Languages</h1>
 </div>
-<a href="/language/new">Create new language</a><br>
-<a href="/">Menu</a>
+<hr>
+<div class="all">
+    <div th:each="language : ${languages}">
+        <p>
+            <a th:href="@{'/language/' + ${language.id}}" th:text="${language.name}">Language</a>
+            <a class="edit-button" th:href="@{'/language/' + ${language.id} + '/edit'}">Edit</a>
+        </p>
+    </div>
+</div>
+<hr>
+<div class="center-menu">
+    <a href="/language/new">Create new language</a><br>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

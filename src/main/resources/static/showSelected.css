@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #29335C;
+    font-family: Arial, sans-serif;
+    color: #A8C686;
+}
+
+.head-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.image-above {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+h1 {
+    color: #F3A712;
+    font-size: 30px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #669BBC;
+    margin: 20px 0;
+}
+
+ul.criminals-list {
+    list-style-type: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    font-size: 40px;
+    margin: 10px;
+    text-shadow: 6px 4px 5px #333333;
+    text-decoration: none;
+    color: #A8C686;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    font-size: 50px;
+    color: #E4572E;
+    transform-origin: left top;
+    margin-top: -10px;
+    margin-left: 20px;
+    transition: margin-left 130ms, margin-top 130ms;
+    transform: scale(1.2);
+    opacity: 0.8;
+    box-shadow: 0 10px 90px rgba(0, 0, 0, 0.4);
+}
+
+.center-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.center-menu a {
+    font-size: 40px;
+    margin: 10px;
+    text-shadow: 6px 4px 5px #333333;
+    text-decoration: none;
+    color: #A8C686;
+    transition: all 0.3s ease;
+}
+
+.center-menu a:hover {
+    font-size: 50px;
+    color: #E4572E;
+    transform-origin: left top;
+    margin-top: -10px;
+    margin-left: 20px;
+    transition: margin-left 130ms, margin-top 130ms;
+    transform: scale(1.2);
+    opacity: 0.8;
+    box-shadow: 0 10px 90px rgba(0, 0, 0, 0.4);
+}

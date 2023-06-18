@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Criminal Professions</title>
+    <link rel="stylesheet" href="/showAll.css?v=1">
 </head>
 <body>
 <div class="head-line">
     <img src="/3724033.png" alt="Police badge" class="image-above">
-    <h1 class="h1">Edit Criminal</h1>
+    <h1 class="h1">Criminal Profession</h1>
 </div>
 <hr>
-<div class = "all">
-<div th:each="criminalProfession : ${criminalsProfession}">
-    <p>
-        <a th:href="@{/criminalProfession/{professionId}(professionId=${criminalProfession.id})}" th:text="${criminalProfession.getName()}">Criminal Profession</a>
-        <a th:href="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}">Edit</a>
-    </p>
+<div class="all">
+    <div th:each="criminalProfession : ${criminalsProfession}">
+        <p>
+            <a th:href="@{/criminalProfession/{professionId}(professionId=${criminalProfession.id})}" th:text="${criminalProfession.getName()}">Criminal Profession</a>
+            <a class="edit-button" th:href="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}">Edit</a>
+        </p>
+    </div>
 </div>
+<hr>
+<div class="center-menu">
+    <a href="/criminalProfession/new">Create new profession</a><br>
+    <a href="/" class="menu-link">Menu</a>
 </div>
-<a href="/criminalProfession/new">Create new profession</a><br>
-<a href="/">Menu</a>
 </body>
 </html>
