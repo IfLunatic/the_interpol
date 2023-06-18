@@ -3,31 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Selected Criminal</title>
+    <link rel="stylesheet" href="/showSelectedCriminal.css?v=1">
 </head>
 <body>
-<p th:text="'Name: ' + ${criminal.name}">VALUE</p>
-<p th:text="'Id: ' + ${criminal.id}">VALUE</p>
-<p th:text="'Surname: ' + ${criminal.surname}">VALUE</p>
-<p th:text="'Nickname: ' + ${criminal.nickname}">VALUE</p>
-<p th:text="'Height: ' + ${criminal.height}">VALUE</p>
-<p th:text="'Hair colour: ' + ${criminal.hairColour}">VALUE</p>
-<p th:text="'Eye colour: ' + ${criminal.eyeColour}">VALUE</p>
-<p th:text="'Special features: ' + ${criminal.specialFeatures}">VALUE</p>
-<p th:text="'Nationality: ' + ${criminal.nationality}">VALUE</p>
-<p th:text="'Place of origin: ' + ${criminal.placeOfOrigin}">VALUE</p>
-<p th:text="'Date of birth: ' + ${criminal.dateOfBirth}">VALUE</p>
-<p th:text="'Place of residence: ' + ${criminal.lastPlaceOfResidence}">VALUE</p>
-<p th:text="'Last case: ' + ${criminal.lastCase}">VALUE</p>
-<p th:text="'Band(group): ' + ${criminal.group}">VALUE</p>
-<p th:text="'Profession: ' + ${criminal.profession}">VALUE</p>
-<p th:text="'Language: ' + ${criminal.language}">VALUE</p>
-<p th:text="'Archived: ' + ${criminal.archived ? 'Yes' : 'No'}">VALUE</p>
-<button>
-    <a th:href="@{/criminals/{id}/edit(id=${criminal.id})}">Edit</a>
-</button>
-<form th:method="DELETE" th:action="@{/criminals/{id}(id=${criminal.id})}">
-    <input type="submit" value="Delete"/>
-</form>
-<a href="/">Menu</a>
+    <img src="/criminal.jpg" alt="Criminal Offender" class="image-criminal">
+<div class = "text">
+<div>
+<div class="id">
+    <p class = "text-left">Id: </p>
+    <p class = "text-right" th:text="${criminal.id}">VALUE</p>
+</div>
+
+<div class="name">
+    <p class = "text-left">Name: </p>
+    <p class = "text-right" th:text="${criminal.name}">VALUE</p>
+</div>
+
+<div class="surname">
+    <p class = "text-left" >Surname: </p>
+    <p class = "text-right" th:text="${criminal.surname}">VALUE</p>
+</div>
+
+<div class="nickname">
+    <p class = "text-left" >Nickname: </p>
+    <p class = "text-right" th:text="${criminal.nickname}">VALUE</p>
+</div>
+
+<div class="height">
+    <p class = "text-left" >Height: </p>
+    <p class = "text-right" th:text="${criminal.height}">VALUE</p>
+</div>
+
+<div class="hairColour">
+    <p class = "text-left" >Hair colour: </p>
+    <p class = "text-right" th:text="${criminal.hairColour}">VALUE</p>
+</div>
+
+<div class="eyeColour">
+    <p class = "text-left" >Eye colour: </p>
+    <p class = "text-right" th:text="${criminal.eyeColour}">VALUE</p>
+</div>
+
+<div class="specialFeatures">
+    <p class = "text-left" >Special features: </p>
+    <p class = "text-right" th:text="${criminal.specialFeatures}">VALUE</p>
+</div>
+</div>
+<div>
+<div class="nationality">
+    <p class = "text-left" >Nationality: </p>
+    <p class = "text-right" th:text="${criminal.nationality}">VALUE</p>
+</div>
+
+<div class="placeOfOrigin">
+    <p class = "text-left" >Place of origin: </p>
+    <p class = "text-right" th:text="${criminal.placeOfOrigin}">VALUE</p>
+</div>
+
+<div class="dateOfBirth">
+    <p class = "text-left" >Date of birth: </p>
+    <p class = "text-right" th:text="${criminal.dateOfBirth}">VALUE</p>
+</div>
+
+<div class="lastPlaceOfResidence">
+    <p class = "text-left" >Place of residence: </p>
+    <p class = "text-right" th:text="${criminal.lastPlaceOfResidence}">VALUE</p>
+</div>
+
+<div class="lastCase">
+    <p class = "text-left" >Last case: </p>
+    <p class = "text-right" th:text="${criminal.lastCase}">VALUE</p>
+</div>
+
+<div class="group">
+    <p class = "text-left" >Band(group): </p>
+    <p class = "text-right" th:text="${criminal.group}">VALUE</p>
+</div>
+
+<div class="profession">
+    <p class = "text-left" >Profession: </p>
+    <p class = "text-right" th:text="${criminal.profession}">VALUE</p>
+</div>
+
+<div class="language">
+    <p class = "text-left" >Language: </p>
+    <p class = "text-right" th:text="${criminal.language}">VALUE</p>
+</div>
+
+<div class="archived">
+    <p class = "text-left" >Archived: </p>
+    <p class = "text-right" th:text="${criminal.archived ? 'Yes' : 'No'}">VALUE</p>
+</div>
+</div>
+</div>
+<div class="button-container">
+    <button class="edit-button">
+        <a th:href="@{/criminals/{id}/edit(id=${criminal.id})}">Edit</a>
+    </button>
+    <form th:method="DELETE" th:action="@{/criminals/{id}(id=${criminal.id})}">
+        <input type="submit" value="Delete" class="delete-button" />
+    </form>
+    <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

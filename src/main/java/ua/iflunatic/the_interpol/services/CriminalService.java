@@ -1,22 +1,17 @@
 package ua.iflunatic.the_interpol.services;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 import ua.iflunatic.the_interpol.entities.Criminal;
 import ua.iflunatic.the_interpol.entities.CriminalProfession;
 import ua.iflunatic.the_interpol.repositories.CriminalRepository;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 @Service
 public class CriminalService {
 
-    private CriminalRepository criminalRepository;
+    private final CriminalRepository criminalRepository;
     public CriminalService(CriminalRepository repository) {
         this.criminalRepository = repository;
     }

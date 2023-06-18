@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/criminals.css?v=1">
 </head>
 <body>
-<div th:each="c : ${criminals}">
-    <a th:href="@{criminals/{id}(id=${c.getId()})}" th:text="${c.getId() + ' ' +  c.getName() + ' ' + c.getSurname()}">Criminal</a>
+    <div class = "head-line">
+        <img src="/3724033.png" alt="Police badge" class="image-above">
+        <h1>All Criminals</h1>
+    </div>
+    <hr>
+<div class = "all" th:each="c : ${criminals}">
+    <a th:href="@{criminals/{id}(id=${c.getId()})}" th:text="${c.getName() + ' ' + c.getSurname() + ' ' + c.getDateOfBirth()}">Criminal</a>
 </div>
-<a href="/">Menu</a>
+    <div class = "center-menu">
+        <a href="/">Menu</a>
+    </div>
 </body>
 </html>

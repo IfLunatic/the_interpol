@@ -94,7 +94,7 @@ public class CriminalController {
     }
 
     @PostMapping("/filteredCriminals")
-    public String filterCriminals(@Valid @ModelAttribute Criminal criminal, Model model) {
+    public String filterCriminals(@ModelAttribute Criminal criminal, Model model) {
         List<Criminal> filteredCriminals = criminalService.filterCriminals(
                 criminal.getSurname(),
                 criminal.getName(),

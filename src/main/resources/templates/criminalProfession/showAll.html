@@ -5,11 +5,13 @@
     <title>Criminal Professions</title>
 </head>
 <body>
+<div class = "all">
 <div th:each="criminalProfession : ${criminalsProfession}">
     <p>
         <a th:href="@{/criminalProfession/{professionId}(professionId=${criminalProfession.id})}" th:text="${criminalProfession.id + ' ' + criminalProfession.getName()}">Criminal Profession</a>
         <a th:href="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}">Edit</a>
     </p>
+</div>
 </div>
 <a href="/criminalProfession/new">Create new profession</a><br>
 <a href="/">Menu</a>
