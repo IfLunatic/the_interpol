@@ -5,10 +5,15 @@
     <title>Criminal Professions</title>
 </head>
 <body>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Edit Criminal</h1>
+</div>
+<hr>
 <div class = "all">
 <div th:each="criminalProfession : ${criminalsProfession}">
     <p>
-        <a th:href="@{/criminalProfession/{professionId}(professionId=${criminalProfession.id})}" th:text="${criminalProfession.id + ' ' + criminalProfession.getName()}">Criminal Profession</a>
+        <a th:href="@{/criminalProfession/{professionId}(professionId=${criminalProfession.id})}" th:text="${criminalProfession.getName()}">Criminal Profession</a>
         <a th:href="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}">Edit</a>
     </p>
 </div>

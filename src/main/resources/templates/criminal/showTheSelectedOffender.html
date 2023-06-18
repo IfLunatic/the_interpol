@@ -100,10 +100,39 @@
     <button class="edit-button">
         <a th:href="@{/criminals/{id}/edit(id=${criminal.id})}">Edit</a>
     </button>
-    <form th:method="DELETE" th:action="@{/criminals/{id}(id=${criminal.id})}">
-        <input type="submit" value="Delete" class="delete-button" />
+    <form id="deleteForm" th:method="DELETE" th:action="@{/criminals/{id}(id=${criminal.id})}">
+        <input type="submit" value="Delete" class="delete-button" onclick="openModal()" />
     </form>
     <a href="/" class="menu-link">Menu</a>
 </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>You confirm that this offender is dead?</p>
+            <div class="modal-buttons">
+                <button onclick="deleteCriminal()">Yes</button>
+                <button onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+            function openModal() {
+            document.getElementById("modal").style.display = "block";
+        }
+
+            function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+            function deleteCriminal() {
+            const form = document.getElementById("deleteForm");
+            form.submit();
+            closeModal();
+        }
+            document.querySelector("form").addEventListener("submit", function(event) {
+                event.preventDefault();
+            });
+    </script>
+
 </body>
 </html>

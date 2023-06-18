@@ -3,85 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit criminal</title>
+    <link rel="stylesheet" href="/editCriminal.css?v=1">
 </head>
 <body>
-<form method="POST" th:action="@{/criminals/{id}(id=${criminal.id})}" th:object="${criminal}">
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1 class="h1">Edit Criminal</h1>
+</div>
+<form class="form" method="POST" th:action="@{/criminals/{id}(id=${criminal.id})}" th:object="${criminal}">
     <input type="hidden" name="_method" value="PATCH"/>
-    <label for="surname">Surname:</label>
-    <input type="text" th:field="*{surname}" id="surname"/>
-    <div style="color:red" th:errors="*{surname}">Surname Error</div>
+    <label for="surname" class="label">Surname:</label>
+    <input type="text" th:field="*{surname}" id="surname" class="input"/>
+    <div style="color:red" th:errors="*{surname}" class="error-message">Surname Error</div>
     <br/>
-    <label for="name">Name:</label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <div style="color:red" th:errors="*{name}">Name Error</div>
+    <label for="name" class="label">Name:</label>
+    <input type="text" th:field="*{name}" id="name" class="input"/>
+    <div style="color:red" th:errors="*{name}" class="error-message">Name Error</div>
     <br/>
-    <label for="nickname">Nickname:</label>
-    <input type="text" th:field="*{nickname}" id="nickname"/>
-    <div style="color:red" th:errors="*{nickname}">Nickname Error</div>
+    <label for="nickname" class="label">Nickname:</label>
+    <input type="text" th:field="*{nickname}" id="nickname" class="input"/>
+    <div style="color:red" th:errors="*{nickname}" class="error-message">Nickname Error</div>
     <br/>
-    <label for="height">Height:</label>
-    <input type="number" th:field="*{height}" id="height"/>
-    <div style="color:red" th:errors="*{height}">Height Error</div>
+    <label for="height" class="label">Height:</label>
+    <input type="number" th:field="*{height}" id="height" class="input"/>
+    <div style="color:red" th:errors="*{height}" class="error-message">Height Error</div>
     <br/>
-    <label for="hairColour">Hair Colour:</label>
-    <input type="text" th:field="*{hairColour}" id="hairColour"/>
-    <div style="color:red" th:errors="*{hairColour}">Hair Colour Error</div>
+    <label for="hairColour" class="label">Hair Colour:</label>
+    <input type="text" th:field="*{hairColour}" id="hairColour" class="input"/>
+    <div style="color:red" th:errors="*{hairColour}" class="error-message">Hair Colour Error</div>
     <br/>
-    <label for="eyeColour">Eye Colour:</label>
-    <input type="text" th:field="*{eyeColour}" id="eyeColour"/>
-    <div style="color:red" th:errors="*{eyeColour}">Eye Colour Error</div>
+    <label for="eyeColour" class="label">Eye Colour:</label>
+    <input type="text" th:field="*{eyeColour}" id="eyeColour" class="input"/>
+    <div style="color:red" th:errors="*{eyeColour}" class="error-message">Eye Colour Error</div>
     <br/>
-    <label for="specialFeatures">Special Features:</label>
-    <textarea th:field="*{specialFeatures}" id="specialFeatures"></textarea>
+    <label for="specialFeatures" class="label">Special Features:</label>
+    <textarea th:field="*{specialFeatures}" id="specialFeatures" class="textarea"></textarea>
     <br/>
-    <label for="nationality">Nationality:</label>
-    <select th:field="*{nationality}" id="nationality">
+    <label for="nationality" class="label">Nationality:</label>
+    <select th:field="*{nationality}" id="nationality" class="select">
         <option value="">Select Nationality</option>
         <option th:each="nationality : ${nationalities}" th:value="${nationality.id}" th:text="${nationality.name}">Nationality Name</option>
     </select>
-    <div style="color:red" th:errors="*{nationality}">Nationality Error</div>
+    <div style="color:red" th:errors="*{nationality}" class="error-message">Nationality Error</div>
     <br/>
-    <label for="placeOfOrigin">Place of Origin:</label>
-    <input type="text" th:field="*{placeOfOrigin}" id="placeOfOrigin"/>
-    <div style="color:red" th:errors="*{placeOfOrigin}">Place of Origin Error</div>
+    <label for="placeOfOrigin" class="label">Place of Origin:</label>
+    <input type="text" th:field="*{placeOfOrigin}" id="placeOfOrigin" class="input"/>
+    <div style="color:red" th:errors="*{placeOfOrigin}" class="error-message">Place of Origin Error</div>
     <br/>
-    <label for="dateOfBirth">Date of Birth (yyyy-MM-dd):</label>
-    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth"/>
-    <div style="color:red" th:errors="*{dateOfBirth}">Date of Birth Error</div>
+    <label for="dateOfBirth" class="label">Date of Birth (yyyy-MM-dd):</label>
+    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth" class="input"/>
+    <div style="color:red" th:errors="*{dateOfBirth}" class="error-message">Date of Birth Error</div>
     <br/>
-    <label for="lastPlaceOfResidence">Last Place of Residence:</label>
-    <input type="text" th:field="*{lastPlaceOfResidence}" id="lastPlaceOfResidence"/>
-    <div style="color:red" th:errors="*{lastPlaceOfResidence}">Last Place of Residence Error</div>
+    <label for="lastPlaceOfResidence" class="label">Last Place of Residence:</label>
+    <input type="text" th:field="*{lastPlaceOfResidence}" id="lastPlaceOfResidence" class="input"/>
+    <div style="color:red" th:errors="*{lastPlaceOfResidence}" class="error-message">Last Place of Residence Error</div>
     <br/>
-    <label for="lastCase">Last Case:</label>
-    <input type="text" th:field="*{lastCase}" id="lastCase"/>
-    <div style="color:red" th:errors="*{lastCase}">Last Case Error</div>
+    <label for="lastCase" class="label">Last Case:</label>
+    <input type="text" th:field="*{lastCase}" id="lastCase" class="input"/>
+    <div style="color:red" th:errors="*{lastCase}" class="error-message">Last Case Error</div>
     <br/>
-    <label for="group">Group:</label>
-    <select th:field="*{group}" id="group">
+    <label for="group" class="label">Group:</label>
+    <select th:field="*{group}" id="group" class="select">
         <option value="">Select Group</option>
         <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.groupName}">Group Name</option>
     </select>
-    <div style="color:red" th:errors="*{group}">Group Error</div>
+    <div style="color:red" th:errors="*{group}" class="error-message">Group Error</div>
     <br/>
-    <label for="profession">Profession:</label>
-    <select th:field="*{profession}" id="profession">
+    <label for="profession" class="label">Profession:</label>
+    <select th:field="*{profession}" id="profession" class="select">
         <option value="">Select Profession</option>
         <option th:each="profession : ${professions}" th:value="${profession.id}" th:text="${profession.name}">Profession Name</option>
     </select>
-    <div style="color:red" th:errors="*{profession}">Profession Error</div>
+    <div style="color:red" th:errors="*{profession}" class="error-message">Profession Error</div>
     <br/>
-    <label for="language">Language:</label>
-    <select th:field="*{language}" id="language">
+    <label for="language" class="label">Language:</label>
+    <select th:field="*{language}" id="language" class="select">
         <option value="">Select Language</option>
         <option th:each="language : ${languages}" th:value="${language.id}" th:text="${language.name}">Language Name</option>
     </select>
-    <div style="color:red" th:errors="*{language}">Language Error</div>
+    <div style="color:red" th:errors="*{language}" class="error-message">Language Error</div>
     <br/>
-    <label for="archived">Archived:</label>
+    <label for="archived" class="label">Archived:</label>
     <input type="checkbox" th:field="*{archived}" id="archived"/>
     <br/>
-    <input type="submit" value="Update!"/>
+    <input type="submit" value="Update!" class="button"/>
 </form>
 </body>
 </html>

@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Filter Criminals</title>
+  <link rel="stylesheet" href="/filter.css?v=1">
 </head>
 <body>
-<h1>Filter Criminals</h1>
 <form th:action="@{/criminals/filteredCriminals}" method="post" th:object="${criminal}">
   <label for="surname">Surname:</label>
   <input type="text" id="surname" name="surname" th:value="${criminal.surname}">
