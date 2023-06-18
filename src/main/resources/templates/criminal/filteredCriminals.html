@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Filtered Criminals</title>
+  <link rel="stylesheet" href="/filteredCriminals.css?v=1">
 </head>
 <body>
-<h1>Filtered Criminals</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Surname</th>
-    <th>Name</th>
-    <th>Nickname</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="entity : ${filteredCriminals}">
-    <td th:text="${entity.surname}"></td>
-    <td th:text="${entity.name}"></td>
-    <td th:text="${entity.nickname}"></td>
-  </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1>Filtered Criminals</h1>
+    <a href="/" class="menu-link">Menu</a>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Surname</th>
+      <th>Name</th>
+      <th>Nickname</th>
+      <th>Height</th>
+      <th>Hair Colour</th>
+      <th>Eye Colour</th>
+      <th>Special Features</th>
+      <th>Place of Origin</th>
+      <th>Date of Birth</th>
+      <th>Last Place of Residence</th>
+      <th>Last Case</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entity : ${filteredCriminals}">
+      <td>
+        <a th:href="@{'/criminals/' + ${entity.id}}">
+          <span th:text="${entity.surname}"></span>
+        </a>
+      </td>
+      <td th:text="${entity.name}"></td>
+      <td th:text="${entity.nickname}"></td>
+      <td th:text="${entity.height}"></td>
+      <td th:text="${entity.hairColour}"></td>
+      <td th:text="${entity.eyeColour}"></td>
+      <td th:text="${entity.specialFeatures}"></td>
+      <td th:text="${entity.placeOfOrigin}"></td>
+      <td th:text="${entity.dateOfBirth}"></td>
+      <td th:text="${entity.lastPlaceOfResidence}"></td>
+      <td th:text="${entity.lastCase}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
