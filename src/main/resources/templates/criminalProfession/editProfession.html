@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit Criminal Profession</title>
+  <link rel="stylesheet" href="/edit.css?v=1">
 </head>
 <body>
-<h1>Edit Criminal Profession</h1>
-<form th:action="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}" method="post">
-  <input type="hidden" name="_method" value="PATCH" />
-  <label for="name">Profession Name:</label>
-  <input type="text" id="name" name="name" th:value="${criminalProfession.name}" />
-  <button type="submit">Update Profession</button>
-</form>
+<div class="head-line">
+  <img src="/3724033.png" alt="Police badge" class="image-above">
+  <h1 class="h1">Edit Criminal Profession</h1>
+</div>
+<hr>
+<div class="form-container">
+  <form th:action="@{/criminalProfession/{professionId}/edit(professionId=${criminalProfession.id})}" method="post">
+    <input type="hidden" name="_method" value="PATCH" />
+    <label for="name">Profession Name:</label>
+    <input type="text" id="name" name="name" th:value="${criminalProfession.name}" />
+    <button type="submit">Update Profession</button>
+  </form>
+</div>
+<hr>
+<div class="center-menu">
+  <a href="/group/showAll">Back to Groups</a>
+  <a href="/" class="menu-link">Menu</a>
+</div>
 </body>
 </html>

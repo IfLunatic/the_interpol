@@ -2,12 +2,14 @@ package ua.iflunatic.the_interpol.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "criminal")
 @Data
+@Validated
 @NoArgsConstructor
 @AllArgsConstructor
 public class Criminal {
@@ -16,33 +18,42 @@ public class Criminal {
     @Column(name = "id")
     private Integer id;
 
-    @NotEmpty(message = "Surname should not be empty")
+    @NotBlank(message = "Surname should not be empty")
+    @NotNull
     private String surname;
 
-    @NotEmpty(message = "Name should not be empty")
+    @NotNull
+    @NotBlank(message = "Name should not be empty")
     private String name;
 
-    @NotEmpty(message = "Nickname should not be empty")
+    @NotNull
+    @NotBlank(message = "Nickname should not be empty")
     private String nickname;
 
-    @Min(value = 0, message = "Age should be greater than 0")
+    @NotNull
+    @Min(value = 1, message = "Height should be greater than 0")
     private Integer height;
 
-    @NotEmpty(message = "Hair colour should not be empty")
+    @NotNull
+    @NotBlank(message = "Hair colour should not be empty")
     private String hairColour;
 
-    @NotEmpty(message = "Eye colour should not be empty")
+    @NotNull
+    @NotBlank(message = "Eye colour should not be empty")
     private String eyeColour;
 
     private String specialFeatures;
 
-    @NotEmpty(message = "Place of origin should not be empty")
+    @NotNull
+    @NotBlank(message = "Place of origin should not be empty")
     private String placeOfOrigin;
 
+    @NotNull
     @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Дата повинна бути записана у форматі (рік-місяць-день)")
     private String dateOfBirth;
 
-    @NotEmpty(message = "Last place of residence should not be empty")
+    @NotNull
+    @NotBlank(message = "Last place of residence should not be empty")
     private String lastPlaceOfResidence;
 
     private String lastCase;
@@ -65,6 +76,38 @@ public class Criminal {
 
     @Column(name = "archived", nullable = false)
     private boolean archived;
+
+    @PrePersist
+    @PreUpdate
+    private void validateFields() {
+        if (surname == null || surname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Surname should not be empty");
+        }
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name should not be empty");
+        }
+        if (nickname == null || nickname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nickname should not be empty");
+        }
+        if (height == null || height <= 0) {
+            throw new IllegalArgumentException("Height should be greater than 0");
+        }
+        if (hairColour == null || hairColour.trim().isEmpty()) {
+            throw new IllegalArgumentException("Hair colour should not be empty");
+        }
+        if (eyeColour == null || eyeColour.trim().isEmpty()) {
+            throw new IllegalArgumentException("Eye colour should not be empty");
+        }
+        if (placeOfOrigin == null || placeOfOrigin.trim().isEmpty()) {
+            throw new IllegalArgumentException("Place of origin should not be empty");
+        }
+        if (dateOfBirth == null || dateOfBirth.trim().isEmpty()) {
+            throw new IllegalArgumentException("Date of birth should not be empty");
+        }
+        if (lastPlaceOfResidence == null || lastPlaceOfResidence.trim().isEmpty()) {
+            throw new IllegalArgumentException("Last place of residence should not be empty");
+        }
+    }
 
     @Override
     public String toString() {

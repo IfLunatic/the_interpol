@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="/createCriminals.css?v=1">
 </head>
 <body>
-    <div class = "head-line">
-        <img src="/3724033.png" alt="Police badge" class="image-above">
-        <h1>Create Criminal</h1>
-    </div>
-    <hr>
+<div class="head-line">
+    <img src="/3724033.png" alt="Police badge" class="image-above">
+    <h1>Create Criminal</h1>
+</div>
+<hr>
 <form method="post" th:action="@{/criminals}" th:object="${criminal}">
     <div class="inner-div">
         <label for="surname">Surname:</label>
@@ -21,7 +21,6 @@
         <input type="text" th:field="*{name}" id="name"/>
         <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
     </div>
-
     <div class="inner-div">
         <label for="nickname">Nickname:</label>
         <input type="text" th:field="*{nickname}" id="nickname"/>
@@ -30,21 +29,21 @@
     <div class="inner-div">
         <label for="height">Height:</label>
         <input type="number" th:field="*{height}" id="height"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{height}">Height Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('height')}" th:errors="*{height}">Height Error</div>
     </div>
     <div class="inner-div">
         <label for="hairColour">Hair Colour:</label>
         <input type="text" th:field="*{hairColour}" id="hairColour"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{hairColour}">Hair Colour Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('hairColour')}" th:errors="*{hairColour}">Hair Colour Error</div>
     </div>
     <div class="inner-div">
         <label for="eyeColour">Eye Colour:</label>
         <input type="text" th:field="*{eyeColour}" id="eyeColour"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{eyeColour}">Eye Colour Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('eyeColour')}" th:errors="*{eyeColour}">Eye Colour Error</div>
     </div>
     <div class="inner-div">
         <label for="specialFeatures">Special Features:</label>
-        <textarea  th:field="*{specialFeatures}" id="specialFeatures"></textarea>
+        <textarea th:field="*{specialFeatures}" id="specialFeatures"></textarea>
     </div>
     <div class="inner-div">
         <label for="nationality">Nationality:</label>
@@ -52,43 +51,43 @@
             <option value="">Select Nationality</option>
             <option th:each="nationality : ${nationalities}" th:value="${nationality.id}" th:text="${nationality.name}">Nationality Name</option>
         </select>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nationality}">Nationality Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('nationality')}" th:errors="*{nationality}">Nationality Error</div>
     </div>
     <div class="inner-div">
         <label for="placeOfOrigin">Place of Origin:</label>
         <input type="text" th:field="*{placeOfOrigin}" id="placeOfOrigin"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{placeOfOrigin}">Place of Origin Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('placeOfOrigin')}" th:errors="*{placeOfOrigin}">Place of Origin Error</div>
     </div>
     <div class="inner-div">
         <label for="dateOfBirth">Date of Birth (yyyy-MM-dd):</label>
         <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{dateOfBirth}">Date of Birth Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Date of Birth Error</div>
     </div>
     <div class="inner-div">
         <label for="lastPlaceOfResidence">Last Place of Residence:</label>
         <input type="text" th:field="*{lastPlaceOfResidence}" id="lastPlaceOfResidence"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{lastPlaceOfResidence}">Last Place of Residence Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('lastPlaceOfResidence')}" th:errors="*{lastPlaceOfResidence}">Last Place of Residence Error</div>
     </div>
     <div class="inner-div">
         <label for="lastCase">Last Case:</label>
         <input type="text" th:field="*{lastCase}" id="lastCase"/>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{lastCase}">Last Case Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('lastCase')}" th:errors="*{lastCase}">Last Case Error</div>
     </div>
     <div class="inner-div">
-    <label for="group">Group:</label>
-    <select th:field="*{group}" id="group">
-        <option value="">Select Group</option>
-        <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.groupName}">Group Name</option>
-    </select>
-    <div style="color:red" th:errors="*{group}">Group Error</div>
+        <label for="group">Group:</label>
+        <select th:field="*{group}" id="group">
+            <option value="">Select Group</option>
+            <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.groupName}">Group Name</option>
+        </select>
+        <div style="color:red" th:if="${#fields.hasErrors('group')}" th:errors="*{group}">Group Error</div>
     </div>
     <div class="inner-div">
-    <label for="profession">Profession:</label>
-    <select th:field="*{profession}" id="profession">
-        <option value="">Select Profession</option>
-        <option th:each="profession : ${professions}" th:value="${profession.getId()}" th:text="${profession.getName()}">Profession Name</option>
-    </select>
-    <div style="color:red" th:errors="*{profession}">Profession Error</div>
+        <label for="profession">Profession:</label>
+        <select th:field="*{profession}" id="profession">
+            <option value="">Select Profession</option>
+            <option th:each="profession : ${professions}" th:value="${profession.getId()}" th:text="${profession.getName()}">Profession Name</option>
+        </select>
+        <div style="color:red" th:if="${#fields.hasErrors('profession')}" th:errors="*{profession}">Profession Error</div>
     </div>
     <div class="inner-div">
         <label for="language">Language:</label>
@@ -96,9 +95,9 @@
             <option value="">Select Language</option>
             <option th:each="language : ${languages}" th:value="${language.id}" th:text="${language.name}">Language Name</option>
         </select>
-        <div style="color:red" th:if="${#fields.hasErrors('nickname')}" th:errors="*{language}">Language Error</div>
+        <div style="color:red" th:if="${#fields.hasErrors('language')}" th:errors="*{language}">Language Error</div>
     </div>
-    <input class = "button" type="submit" value="Create!"/>
+    <input class="button" type="submit" value="Create!"/>
 </form>
 <a href="/">Menu</a>
 </body>

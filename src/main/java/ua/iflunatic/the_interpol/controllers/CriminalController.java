@@ -47,8 +47,10 @@ public class CriminalController {
             model.addAttribute("languages", languageService.getLanguages());
             model.addAttribute("professions", criminalProfessionService.getCriminalProfessions());
             model.addAttribute("nationalities", nationalityService.getNationalities());
+            model.addAttribute("errors", bindingResult.getAllErrors());
             return "criminal/createCriminal";
         }
+
         criminalService.save(criminal);
         return "redirect:/criminals";
     }
@@ -77,6 +79,7 @@ public class CriminalController {
             model.addAttribute("languages", languageService.getLanguages());
             model.addAttribute("professions", criminalProfessionService.getCriminalProfessions());
             model.addAttribute("nationalities", nationalityService.getNationalities());
+            model.addAttribute("errors", bindingResult.getAllErrors());
             return "criminal/editCriminal";
         }
 
